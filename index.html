@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Pixel Cats Paradise</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+    :root {
+      --primary: #808080;
+      /* Main cat gray */
+      --secondary: #D2691E;
+      /* Warm chestnut accent */
+      --accent: #FFA500;
+      /* Fox orange for highlights */
+      --background: #2A2A2A;
+      /* Darker gray */
+      --text: #FFFFFF;
+      /* White */
+      --alt-accent: #1E90FF;
+      /* Bird blue for highlights */
+      --pixel-size: 4px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Press Start 2P', cursive;
+      image-rendering: pixelated;
+    }
+
+    body {
+      background-color: var(--background);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .pixel-border {
+      position: relative;
+      padding: 1rem;
+    }
+
+    body {
+      font-size: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        font-size: 2.75rem;
+      }
+    }
+
+    .pixel-border::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background:
+        linear-gradient(to right, var(--primary) var(--pixel-size), transparent var(--pixel-size)) 0 0,
+        linear-gradient(to right, var(--primary) var(--pixel-size), transparent var(--pixel-size)) 0 100%,
+        linear-gradient(to left, var(--primary) var(--pixel-size), transparent var(--pixel-size)) 100% 0,
+        linear-gradient(to left, var(--primary) var(--pixel-size), transparent var(--pixel-size)) 100% 100%,
+        linear-gradient(to bottom, var(--primary) var(--pixel-size), transparent var(--pixel-size)) 0 0,
+        linear-gradient(to bottom, var(--primary) var(--pixel-size), transparent var(--pixel-size)) 100% 0,
+        linear-gradient(to top, var(--primary) var(--pixel-size), transparent var(--pixel-size)) 0 100%,
+        linear-gradient(to top, var(--primary) var(--pixel-size), transparent var(--pixel-size)) 100% 100%;
+      background-repeat: no-repeat;
+      background-size: 20px 20px;
+      pointer-events: none;
+    }
+
+    nav {
+      background: var(--primary);
+      padding: 1rem;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    nav a {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.7rem;
+      transition: all 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    nav ul {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    h1 {
+      font-size: 2rem;
+      color: var(--text);
+      text-shadow: 4px 4px 0 #a51f1f;
+      margin-bottom: 1.5rem;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+
+    h3 {
+      font-size: 1rem;
+      color: var(--secondary);
+      margin-bottom: 1rem;
+    }
+
+    section {
+      min-height: 100vh;
+      padding: 6rem 2rem 2rem;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeIn 0.5s ease-out forwards;
+    }
+
+    @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+    :root {
+      --primary: #808080;
+      --secondary: #D2691E;
+      --accent: #FFA500;
+      --background: #2A2A2A;
+      --text: #FFFFFF;
+      --alt-accent: #1E90FF;
+      --pixel-size: 4px;
+      --card-width: 300px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Press Start 2P', cursive;
+    }
+
+    /* Enhanced Cat Cards */
+    .cat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(var(--card-width), auto));
+      gap: 2rem;
+      padding: 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 1200px) {
+      :root {
+        --card-width: 250px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      :root {
+        --card-width: 220px;
+      }
+
+      .cat-grid {
+        gap: 1rem;
+        padding: 1rem;
+      }
+    }
+
+    @media (max-width: 393px) {
+    .cat-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      padding: 1rem;
+    }
+  }
+
+    .cat-card {
+      background: var(--primary);
+      border-radius: 12px;
+      padding: 1.5rem;
+      text-align: center;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .cat-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .cat-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin: 0.5rem 0;
+    }
+
+    .cat-card h3 {
+      margin: 0.5rem 0;
+      color: var(--accent);
+    }
+
+    .cat-card p {
+      font-size: 0.7rem;
+      color: var(--text);
+    }
+
+    /* Enhanced Contact Form */
+    .contact-section {
+      padding: 2rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .contact-form {
+      background: var(--primary);
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      margin: 0 auto;
+    }
+
+    @media (max-width: 768px) {
+      .contact-section {
+        padding: 1rem;
+      }
+
+      .contact-form {
+        padding: 1.5rem;
+      }
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-size: 0.8rem;
+      color: var(--text);
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 1rem;
+      background: var(--background);
+      border: 2px solid var(--accent);
+      border-radius: 8px;
+      color: var(--text);
+      font-size: 0.8rem;
+      transition: all 0.3s ease;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--secondary);
+      box-shadow: 0 0 0 3px rgba(210, 105, 30, 0.3);
+    }
+
+    .form-group textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .submit-button {
+      width: 100%;
+      padding: 1rem;
+      background: var(--accent);
+      color: var(--text);
+      border: none;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .submit-button:hover {
+      background: var(--secondary);
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 480px) {
+
+      .form-group input,
+      .form-group textarea,
+      .submit-button {
+        padding: 0.8rem;
+      }
+
+      .form-group {
+        margin-bottom: 1rem;
+      }
+    }
+    @media (max-width: 480px) {
+    .contact-form {
+      padding: 2rem;
+      width: 90%;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .submit-button {
+      padding: 1rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+  }
+
+    .cat-sprite {
+      width: 32px;
+      height: 32px;
+      background: var(--accent);
+      margin: 0 auto 1rem;
+      animation: bounce 2s infinite;
+    }
+
+    .facts-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .fact-box {
+      background: var(--primary);
+      margin: 1rem 0;
+      padding: 1.5rem;
+      transition: all 0.3s;
+      font-size: 0.7rem;
+      line-height: 1.8;
+      border: 2px solid transparent;
+    }
+
+    .fact-box:hover {
+      border-color: var(--accent);
+      transform: translateX(10px);
+    }
+
+    .contact-form {
+      max-width: 500px;
+      margin: 0 auto;
+      background: var(--primary);
+      padding: 2rem;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 1rem;
+      margin: 0.5rem 0;
+      background: var(--background);
+      border: var(--pixel-size) solid var(--accent);
+      color: var(--text);
+      font-size: 0.7rem;
+    }
+
+    button {
+      background: var(--accent);
+      border: none;
+      padding: 1rem 2rem;
+      color: var(--text);
+      cursor: pointer;
+      transition: all 0.3s;
+      font-size: 0.7rem;
+      margin-top: 1rem;
+    }
+
+    button:hover {
+      background: var(--secondary);
+      transform: translateY(-4px);
+    }
+
+    .mail-icon {
+      width: 48px;
+      height: 32px;
+      background: var(--accent);
+      margin: 2rem auto;
+      position: relative;
+      animation: float 2s ease-in-out infinite;
+    }
+
+    .pixel-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      opacity: 0.05;
+      z-index: -1;
+      background-image:
+        linear-gradient(to right, var(--primary) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--primary) 1px, transparent 1px);
+      background-size: 16px 16px;
+    }
+
+    @keyframes bounce {
+      50% {
+        transform: translateY(-5px);
+      }
+    }
+
+    @keyframes float {
+      50% {
+        transform: translateY(-8px);
+      }
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <center>
+    <div class="pixel-background"></div>
+    <nav class="pixel-border">
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#types">Types</a></li>
+        <li><a href="#facts">Facts</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <section id="home">
+      <div class="pixel-cat"></div>
+      <h1>Pixel Cats Paradise</h1>
+      <p style="text-align: center; max-width: 600px; margin: 0 auto; font-size: 0.7rem;">
+        Explore the world of pixel cats in their natural habitat. Each cat has its own unique personality and
+        pixel-perfect charm.
+      </p>
+    </section>
+
+    <section id="types">
+      <h2>Types of Cats</h2>
+      <div class="cat-grid">
+        <div class="cat-card pixel-border">
+          <div class="cat-sprite"></div>
+          <h3>Siamese</h3>
+          <p>Royal & Elegant</p>
+          <img src="https://th.bing.com/th/id/OIP.CbXNiIzyOWrNGf4k4F2FTwHaJ4?w=148&h=198&c=7&r=0&o=5&pid=1.7"
+            alt="Siamese Cat" height="250">
+        </div>
+        <div class="cat-card pixel-border">
+          <div class="cat-sprite"></div>
+          <h3>Persian</h3>
+          <p>Fluffy & Majestic</p>
+          <img src="https://th.bing.com/th/id/OIP.uor4zI7BwuOvRKCwhcXNAgHaHa?w=191&h=191&c=7&r=0&o=5&pid=1.7"
+            alt="Persian Cat" height="250">
+        </div>
+        <div class="cat-card pixel-border">
+          <div class="cat-sprite"></div>
+          <h3>Maine Coon</h3>
+          <p>Gentle Giants</p>
+          <img src="https://th.bing.com/th/id/OIP.nRdq9ziRQDktvEb_zMSORwHaD6?w=343&h=181&c=7&r=0&o=5&pid=1.7"
+            alt="Maine Coon" height="200" width="250">
+        </div>
+        <div class="cat-card pixel-border">
+          <div class="cat-sprite"></div>
+          <h3>Ragdoll</h3>
+          <p>Sweet & Relaxed</p>
+          <img
+            src="data:image/jpeg;base64,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"
+            alt="Ragdoll Cat" height="250" width="250">
+        </div>
+      </div>
+    </section>
+
+    <section id="facts" class="pixel-border">
+      <h2>Cat Facts</h2>
+      <div class="facts-container">
+        <div class="fact-box">
+          A cat can sprint at about 31 miles per hour, which is great for catching prey and chasing laser pointers!
+        </div>
+        <div class="fact-box">
+          Cats sleep an average of 16 hours a day and spend 1/3 of their awake time grooming themselves.
+        </div>
+        <div class="fact-box">
+          A cat's nose print is unique, much like a human's fingerprint.
+        </div>
+        <div class="fact-box">
+          Cats have over 20 different vocalizations, including meowing, purring, trilling, chirping, and growling.
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact Us</h2>
+      <div class="mail-icon"><img src="https://th.bing.com/th/id/OIP._aNGqRlld9GDiY3uMqI3DgHaHa?rs=1&pid=ImgDetMain" alt="Mail Icon" height="50" width="50"></div>
+      <form class="contact-form pixel-border"action="mailto:kongolovafadie@gmail.com" method="post" enctype="text/plain">
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <textarea rows="5" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </section>
+  </center>
+    <script>
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+          });
+        });
+      });
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.animation = 'fadeIn 0.5s ease-out forwards';
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('section').forEach(section => {
+        observer.observe(section);
+      });
+    </script>
+</body>
+
+</html>

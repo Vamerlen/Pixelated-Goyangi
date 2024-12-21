@@ -1,0 +1,106 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Pixel', sans-serif;
+  }
+  
+  body {
+    background-color: #f0f0f0;
+    color: #333;
+  }
+  
+  header {
+    background-color: #111;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  
+  header .logo img {
+    width: 50px;
+    transition: transform 0.3s ease;
+  }
+  
+  header nav ul {
+    list-style: none;
+    display: flex;
+  }
+  
+  header nav ul li {
+    margin-left: 20px;
+  }
+  
+  header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+  }
+  
+  header nav ul li a:hover {
+    text-decoration: underline;
+  }
+  
+  section {
+    padding: 40px;
+    text-align: center;
+  }
+  
+  section h1, section h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+  }
+  
+  .cat-types {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+  
+  .mail-icon img {
+    width: 50px;
+    transition: transform 0.3s ease;
+  }
+  
+  .mail-icon:hover img {
+    transform: scale(1.1);
+  }
+  
+  footer {
+    background-color: #111;
+    color: white;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  a {
+    text-decoration: none;
+  }
+  
+  a:hover {
+    color: #f39c12;
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  section {
+    animation: fadeIn 1s ease-in-out;
+  }
+  
+  header .logo img:hover {
+    transform: rotate(360deg);
+  }
+  
